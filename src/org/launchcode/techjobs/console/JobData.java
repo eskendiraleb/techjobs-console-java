@@ -10,6 +10,7 @@ import java.io.Reader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * Created by LaunchCode
@@ -133,7 +134,9 @@ public class JobData {
         loadData();
         // Holds the jobs with the search term
         ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
-        // Loops thought all list
+
+        searchTerm = searchTerm.toLowerCase(Locale.ROOT);
+
         for (HashMap<String, String> row : allJobs) {
             // Loop though everything contained in the dictionary
             for (String fields : row.values()) {
