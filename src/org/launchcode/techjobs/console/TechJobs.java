@@ -12,18 +12,18 @@ public class TechJobs {
     public static void main(String[] args) {
 
         // Initialize our field map with key/name pairs
-        JobData jobData = new JobData();
         HashMap<String, String> columnChoices = new HashMap<>();
         columnChoices.put("core competency", "Skill");
         columnChoices.put("employer", "Employer");
         columnChoices.put("location", "Location");
         columnChoices.put("position type", "Position Type");
         columnChoices.put("all", "All");
-        System.out.println(jobData.findAll());
+
         // Top-level menu options
         HashMap<String, String> actionChoices = new HashMap<>();
         actionChoices.put("search", "Search");
         actionChoices.put("list", "List");
+
         // System.out.println(actionChoices);
         System.out.println("Welcome to LaunchCode's TechJobs App!");
         System.out.println();
@@ -62,7 +62,7 @@ public class TechJobs {
 
                 System.out.println("\n");
 
-                if (searchField.equals("all") && searchField.equals("")) {
+                if (searchField.equals("all")) {
                  printJobs(JobData.findAll());
                     //   System.out.println("Search all fields not yet implemented.");
                 } else {
@@ -126,7 +126,7 @@ public class TechJobs {
                     System.out.println(key + ": " + value);
                 }
                 System.out.println("*****\n");
-                System.out.println(printJob);
+              //  System.out.println(printJob);
             }
         }
     }
