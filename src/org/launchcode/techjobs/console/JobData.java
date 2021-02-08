@@ -21,6 +21,7 @@ public class JobData {
 
     private static ArrayList<HashMap<String, String>> allJobs;
 
+
     /**
      * Fetch list of all values from loaded data,
      * without duplicates, for a given column.
@@ -34,6 +35,7 @@ public class JobData {
         loadData();
 
         ArrayList<String> values = new ArrayList<>();
+
 
         for (HashMap<String, String> row : allJobs) {
             String aValue = row.get(field);
@@ -65,7 +67,8 @@ public class JobData {
      * @param value Value of teh field to search for
      * @return List of all jobs matching the criteria
      */
-    public static ArrayList<HashMap<String, String>> findByColumnAndValue(String column, String value) {
+
+  public static ArrayList<HashMap<String, String>> findByColumnAndValue(String column, String value) {
 
         // load data, if not already loaded
         loadData();
@@ -87,6 +90,7 @@ public class JobData {
     /**
      * Read in data from a CSV file and store it in a list
      */
+
     private static void loadData() {
 
         // Only load data once
@@ -124,5 +128,23 @@ public class JobData {
             e.printStackTrace();
         }
     }
-
+    public static ArrayList<HashMap<String,String>> findByValue (String searchTerm) {
+        // Loads the CSV file to loop though
+        loadData();
+        // Holds the jobs with the search term
+        ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
+        // Loops thought all list
+        for (HashMap<String, String> row : allJobs) {
+            // Loop though everything contained in the dictionary
+            for (String fields : row.values()) {
+                //if the search term is contained
+                if (fields.toLowerCase().contains(searchTerm)) {
+                    jobs.add(row);
+                    break; // prevents duplicates from showing up in the array list
+                }
+            }
+        }
+        // Return the Array that contains jobs with thee search terms
+        return jobs;
+    }
 }
